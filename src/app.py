@@ -17,7 +17,7 @@ def index():
 
 @socket.on("liveFeed")
 def liveFeed(base64_string):
-    print('chegou')
+    #print('chegou')
     # Remove a parte 'data:image/png;base64,' se houver
     header, base64_data = base64_string.split(',', 1)
     if(base64_data is not None):
@@ -31,8 +31,9 @@ def liveFeed(base64_string):
         image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
         if image is not None:
             cv2.imwrite(f'./img-{int(time.time() * 1000)}.png ',image)
-            print('salvou')
-            emit('mensagemRecebida',image_bytes,broadcast=True)
+            #print('salvou')
+            print('emitiu')
+            emit('imagemRetorno',base64_data,broadcast=True)
 
 if __name__ == '__main__':
     socket.run(app, debug=True)
