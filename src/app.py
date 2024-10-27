@@ -30,7 +30,7 @@ def liveFeed(base64_string):
         # Decodifica o array para uma imagem
         image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
         if image is not None:
-            cv2.imwrite(f'./img-{int(time.time() * 1000)}.png ',image)
+            #cv2.imwrite(f'./img-{int(time.time() * 1000)}.png ',image)
             #print('salvou')
             print('emitiu')
             emit('imagemRetorno',base64_data,broadcast=True)
