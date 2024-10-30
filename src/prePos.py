@@ -39,6 +39,7 @@ def sobel(img):
     sobelX = np.uint8(np.absolute(sobelX))
     sobelY = np.uint8(np.absolute(sobelY))
     sobel = cv2.bitwise_or(sobelX, sobelY)
+    sobel = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
     return sobel
 
 def canny(img):

@@ -1,0 +1,18 @@
+
+train: train/images
+val: valid/images
+test: test/images
+
+names:
+  0: betoneira
+  1: carrinho-de-mao
+  2: colher-pedreiro
+  3: saco-de-cimento
+  4: tijolo
+
+# roboflow:
+#   workspace: aps-i4dtn
+#   project: aps-tfk62
+#   version: 1
+#   license: MIT
+#   url: https://universe.roboflow.com/aps-i4dtn/aps-tfk62/dataset/1
