@@ -24,16 +24,36 @@ def liveFeed(base64_string,prePos):
         image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
         print('pre')
         if image is not None:
-            if prePos == 'canny':
-                image = pp.canny(image)
-            elif prePos == 'sobel':
-                image = pp.sobel(image)
-            elif prePos == 'bilateral':
+            if prePos == 'Canny-Bilateral-1024':
                 image = pp.bilateral(image)
-            elif prePos == 'cinza':
-                image = pp.gray(image)
-            elif prePos == 'clahe':
-                image = pp.clahe(image)
+                image = pp.resize(image,1024,1024)
+                image = pp.canny(image)
+
+            elif prePos == 'Canny-Bilateral-640':
+                image = pp.bilateral(image)
+                image = pp.resize(image,640,640)
+                image = pp.canny(image)
+
+            elif prePos == 'Sobel-Bilateral-1024':
+                image = pp.bilateral(image)
+                image = pp.resize(image,1024,1024)
+                image = pp.sobel(image)
+
+            elif prePos == 'Sobel-Bilateral-640':
+                image = pp.bilateral(image)
+                image = pp.resize(image,640,640)
+                image = pp.sobel(image)
+            
+            elif prePos == 'Laplace-Bilateral-1024':
+                image = pp.bilateral(image)
+                image = pp.resize(image,1024,1024)
+                image = pp.laplaciano(image)
+
+            elif prePos == 'Laplace-Bilateral-640':
+                image = pp.bilateral(image)
+                image = pp.resize(image,640,640)
+                image = pp.laplaciano(image)
+
             _, buffer = cv2.imencode('.png', image)
             return_string = base64.b64encode(buffer).decode('utf-8')
             print('retorna')
